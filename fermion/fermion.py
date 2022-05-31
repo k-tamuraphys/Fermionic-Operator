@@ -12,7 +12,7 @@ raising_op = (1 / 2) * (pauli_x + 1.0j * pauli_y)
 lowering_op = (1 / 2) * (pauli_x - 1.0j * pauli_y)
 
 
-class fermion:
+class Fermion:
     """Fermionic operators."""
 
     def __init__(self, n_modes: int) -> None:

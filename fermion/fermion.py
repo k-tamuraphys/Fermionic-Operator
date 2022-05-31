@@ -37,8 +37,8 @@ class Fermion:
         """
         if not 0 <= i <= self._n_modes - 1:
             raise ValueError(f"`i` have to be between 0 and {self._n_modes}.")
-        cop_matrix = identity_matrix
-        for _ in range(1, i):
+        cop_matrix = 1.0
+        for _ in range(i):
             cop_matrix = np.kron(cop_matrix, -pauli_z)
         cop_matrix = np.kron(cop_matrix, lowering_op)
         for _ in range(i + 1, self._n_modes):

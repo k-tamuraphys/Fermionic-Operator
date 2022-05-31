@@ -49,9 +49,20 @@ class fermion:
         """Return creation operator with label `i`
 
         Args:
-            i (int): _description_
+            i (int): Index for the mode
 
         Returns:
             np.ndarray: matrix representation of the creation operator
         """
         return np.transpose(self.cop(i))
+
+    def nop(self, i: int) -> "np.ndarray":
+        """Return the number operator with label `i`
+
+        Args:
+            i (int): Index for the mode
+
+        Returns:
+            np.ndarray: the number operator
+        """
+        return np.matmul(self.cdg(i), self.cop(i))

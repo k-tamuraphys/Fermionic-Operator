@@ -1,35 +1,18 @@
 from scipy.sparse import csr_matrix, kron, spmatrix
 
 identity_matrix = csr_matrix(
-    [
-        [1.0, 0.0],
-        [0.0, 1.0]
-    ],
+    [[1.0, 0.0], [0.0, 1.0]],
 )
 
-pauli_x = csr_matrix(
-    [
-        [0.0, 1.0], 
-        [1.0, 0.0]
-    ]
-)
+pauli_x = csr_matrix([[0.0, 1.0], [1.0, 0.0]])
 
-pauli_y = csr_matrix(
-    [
-        [0.0, -1.0j],
-        [1.0j, 0.0]
-    ]
-)
+pauli_y = csr_matrix([[0.0, -1.0j], [1.0j, 0.0]])
 
-pauli_z = csr_matrix(
-    [
-        [1.0, 0.0],
-        [0.0, -1.0]
-    ]
-)
+pauli_z = csr_matrix([[1.0, 0.0], [0.0, -1.0]])
 
-raising_op = (1 / 2) * (pauli_x + 1.0j* pauli_y)
+raising_op = (1 / 2) * (pauli_x + 1.0j * pauli_y)
 lowering_op = (1 / 2) * (pauli_x - 1.0j * pauli_y)
+
 
 class SparseFermion:
     """Fermionic operators in sparse matrices."""
@@ -85,4 +68,4 @@ class SparseFermion:
         Returns:
             spmatrix: the number operator
         """
-        return self.cdg(index)@self.cop(index)
+        return self.cdg(index) @ self.cop(index)

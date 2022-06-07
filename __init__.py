@@ -1,1 +1,1 @@
-from .fermion import Fermion
+from .fermion import Fermion, SparseFermion

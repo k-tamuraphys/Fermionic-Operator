@@ -66,3 +66,13 @@ class Fermion:
             np.ndarray: the number operator
         """
         return np.matmul(self.cdg(i), self.cop(i))
+
+    def vacuum_state(self) -> "np.ndarray":
+        """Return the vacuum state annihilated by all the cop operators
+
+        Returns:
+            np.ndarray: vacuum state
+        """
+        vacuum = np.zeros(self._dim)
+        vacuum[-1] = 1.0
+        return vacuum

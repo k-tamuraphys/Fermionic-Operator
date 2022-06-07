@@ -1,4 +1,4 @@
-from scipy.sparse import csr_matrix, kron, spmatrix
+from scipy.sparse import csr_matrix, kron, lil_matrix, spmatrix
 
 identity_matrix = csr_matrix(
     [[1.0, 0.0], [0.0, 1.0]],
@@ -69,3 +69,13 @@ class SparseFermion:
             spmatrix: the number operator
         """
         return self.cdg(index) @ self.cop(index)
+
+    def vacuum_state(self) -> "spmatrix":
+        """Return the vacuum state annihilated by all the cop
+
+        Returns:
+            spmatrix: vacuum state as lil_matrix object
+        """
+        vacuum = lil_matrix((1, self._dim))
+        vacuum[-1] = 1.0
+        return vacuum
